@@ -47,9 +47,41 @@ GCC01_CONFIGURE = \
 LIBC_CONFIGURE= \
 	--disable-newlib-supplied-syscalls \
 	--target=${TARGET} \
-	--prefix=${PREFIX} 
+	--prefix=${PREFIX} \
+	--enable-newlib-retargetable-locking \
+	--enable-newlib-reent-check-verify \
+	--enable-newlib-nano-malloc \
+	--disable-newlib-unbuf-stream-opt \
+	--enable-newlib-reent-small \
+	--disable-newlib-fseek-optimization \
+	--enable-newlib-nano-formatted-io \
+	--disable-newlib-fvwrite-in-streamio \
+	--disable-newlib-wide-orient \
+	--enable-lite-exit \
+	--enable-newlib-global-atexit 
+
+
+
+
+
+# --with-sysroot=/data/jenkins/workspace/GNU-toolchain/arm-12-mpacbti/build-arm-none-eabi/nano_install///arm-none-eabi \
+
+GCC02_CONFIGURE= \
+	--target=${TARGET} \
+	--prefix=${PREFIX} \
+	--disable-shared \
+	--disable-nls \
+	--disable-threads \
+	--disable-tls \
+	--enable-checking=release \
+	--enable-languages=c \
+	--with-newlib \
+	--with-gnu-as \
+	--with-gnu-ld \
+	--with-multilib-list=rmprofile
 
 all: binutils
+
 
 binutils: 
 	mkdir -p ${WORKDIR_BINUTILS}
@@ -69,3 +101,8 @@ libc:
 	export PATH=${PREFIX}/bin:${PATH} ; cd ${WORKDIR_LIBC} ; make ${MAKE_OPTS} 
 	export PATH=${PREFIX}/bin:${PATH} ; cd ${WORKDIR_LIBC} ; make install
 
+gcc_02:
+	mkdir -p ${WORKDIR_GCC}
+	cd ${WORKDIR_GCC} && ../../git/gcc.git/configure ${GCC02_CONFIGURE}
+	cd ${WORKDIR_GCC} && make ${MAKE_OPTS} all
+	cd ${WORKDIR_GCC} && make install
