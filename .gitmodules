@@ -1,0 +1,9 @@
+[submodule "git/gcc.git"]
+	path = git/gcc.git
+	url = git://gcc.gnu.org/git/gcc.git
+[submodule "git/newlib-cygwin.git"]
+	path = git/newlib-cygwin.git
+	url = git://sourceware.org/git/newlib-cygwin.git
+[submodule "git/binutils-gdb.git"]
+	path = git/binutils-gdb.git
+	url = git://sourceware.org/git/binutils-gdb.git
