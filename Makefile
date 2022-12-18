@@ -24,8 +24,6 @@ BINUTILS_CONFIGURE = \
     --target=${TARGET} \
     --prefix=${PREFIX}
 
-# --prefix=/data/jenkins/workspace/GNU-toolchain/arm-12-mpacbti/build-arm-none-eabi/install \
-# --with-sysroot=/data/jenkins/workspace/GNU-toolchain/arm-12-mpacbti/build-arm-none-eabi/install/arm-none-eabi \
 
 GCC01_CONFIGURE = \
 	--target=${TARGET} \
@@ -59,12 +57,6 @@ LIBC_CONFIGURE= \
 	--disable-newlib-wide-orient \
 	--enable-lite-exit \
 	--enable-newlib-global-atexit 
-
-
-
-
-
-# --with-sysroot=/data/jenkins/workspace/GNU-toolchain/arm-12-mpacbti/build-arm-none-eabi/nano_install///arm-none-eabi \
 
 GCC02_CONFIGURE= \
 	--target=${TARGET} \
